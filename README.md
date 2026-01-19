@@ -26,7 +26,7 @@ Client                                 Server
 └─────────────────┘                └─────────────────┘
 ```
 
-## Quick Start (TL;DR)
+## Quick Start
 
 ```bash
 # 1. Clone and enter project
