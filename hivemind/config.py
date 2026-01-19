@@ -23,7 +23,7 @@ else:
 # 服务器地址 (用户可配置)
 DEFAULT_SERVER_URL = os.environ.get(
     "HIVEMIND_SERVER_URL",
-    "http://175.27.168.163:8000"  # 你的腾讯云服务器
+    "https://hivemind.earthonline-game.cn"
 )
 
 
