@@ -61,8 +61,15 @@ python scripts/upload.py --adapter ./adapters/my_adapter
 
 - **Python 3.10 - 3.12** (3.13+ 暂不支持，PyTorch 尚未适配)
 - NVIDIA 显卡 + CUDA 11.8+ (推荐)
-- 显存: 8GB+ (QLoRA) / 16GB+ (LoRA)
 - 磁盘: 20GB+ (用于存储基础模型)
+
+### 根据显存选择模型
+
+| 显存 | 推荐模型 | 命令参数 |
+|------|---------|---------|
+| 4-6 GB | Qwen2-1.5B | `--model Qwen/Qwen2-1.5B` |
+| 8-10 GB | Qwen2-7B (默认) | `--model Qwen/Qwen2-7B` |
+| 16+ GB | Qwen2-7B (全精度) | `--model Qwen/Qwen2-7B --no-4bit` |
 
 ## 安装
 

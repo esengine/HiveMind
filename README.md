@@ -61,8 +61,15 @@ python scripts/upload.py --adapter ./adapters/my_adapter
 
 - **Python 3.10 - 3.12** (3.13+ not supported by PyTorch yet)
 - NVIDIA GPU with CUDA 11.8+ (recommended)
-- VRAM: 8GB+ (QLoRA) / 16GB+ (LoRA)
 - Disk: 20GB+ (for base model storage)
+
+### Model Selection by VRAM
+
+| VRAM | Recommended Model | Command |
+|------|-------------------|---------|
+| 4-6 GB | Qwen2-1.5B | `--model Qwen/Qwen2-1.5B` |
+| 8-10 GB | Qwen2-7B (default) | `--model Qwen/Qwen2-7B` |
+| 16+ GB | Qwen2-7B (full) | `--model Qwen/Qwen2-7B --no-4bit` |
 
 ## Installation
 
