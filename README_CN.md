@@ -59,12 +59,35 @@ python scripts/upload.py --adapter ./adapters/my_adapter
 
 ## 环境要求
 
-- Python 3.10+
-- CUDA 11.8+ (推荐)
+- **Python 3.10 - 3.12** (3.13+ 暂不支持，PyTorch 尚未适配)
+- NVIDIA 显卡 + CUDA 11.8+ (推荐)
 - 显存: 8GB+ (QLoRA) / 16GB+ (LoRA)
 - 磁盘: 20GB+ (用于存储基础模型)
 
 ## 安装
+
+### Windows (PowerShell)
+
+```powershell
+# 克隆仓库
+git clone https://github.com/esengine/HiveMind.git
+cd HiveMind
+
+# 创建虚拟环境 (指定 Python 3.11)
+py -3.11 -m venv venv
+venv\Scripts\activate
+
+# 安装 PyTorch GPU 版本
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# 安装 HiveMind
+pip install -e .
+
+# 验证 GPU 是否识别
+python -c "import torch; print('CUDA:', torch.cuda.is_available())"
+```
+
+### Linux/macOS
 
 ```bash
 # 克隆仓库
@@ -72,15 +95,16 @@ git clone https://github.com/esengine/HiveMind.git
 cd HiveMind
 
 # 创建虚拟环境
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux/macOS
+python3.11 -m venv venv
 source venv/bin/activate
 
-# 安装依赖
+# 安装 PyTorch GPU 版本 (Linux + NVIDIA 显卡)
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# 或 CPU 版本 (macOS / 无显卡)
+pip install torch
+
+# 安装 HiveMind
 pip install -e .
 ```
 

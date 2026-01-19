@@ -59,12 +59,35 @@ python scripts/upload.py --adapter ./adapters/my_adapter
 
 ## Requirements
 
-- Python 3.10+
-- CUDA 11.8+ (recommended)
+- **Python 3.10 - 3.12** (3.13+ not supported by PyTorch yet)
+- NVIDIA GPU with CUDA 11.8+ (recommended)
 - VRAM: 8GB+ (QLoRA) / 16GB+ (LoRA)
 - Disk: 20GB+ (for base model storage)
 
 ## Installation
+
+### Windows (PowerShell)
+
+```powershell
+# Clone repository
+git clone https://github.com/esengine/HiveMind.git
+cd HiveMind
+
+# Create virtual environment (use Python 3.11 specifically)
+py -3.11 -m venv venv
+venv\Scripts\activate
+
+# Install PyTorch with CUDA support (for GPU training)
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# Install HiveMind
+pip install -e .
+
+# Verify GPU is detected
+python -c "import torch; print('CUDA:', torch.cuda.is_available())"
+```
+
+### Linux/macOS
 
 ```bash
 # Clone repository
@@ -72,15 +95,16 @@ git clone https://github.com/esengine/HiveMind.git
 cd HiveMind
 
 # Create virtual environment
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux/macOS
+python3.11 -m venv venv
 source venv/bin/activate
 
-# Install dependencies
+# Install PyTorch with CUDA support (Linux with NVIDIA GPU)
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# Or CPU only (macOS / Linux without GPU)
+pip install torch
+
+# Install HiveMind
 pip install -e .
 ```
 
