@@ -2,15 +2,29 @@
 HiveMind 全局配置
 """
 
+import os
 from pathlib import Path
 from pydantic import BaseModel
 
 
-# 项目根目录
+# 项目根目录 (支持环境变量覆盖)
 ROOT_DIR = Path(__file__).parent.parent
-DATA_DIR = ROOT_DIR / "data"
-ADAPTERS_DIR = ROOT_DIR / "adapters"
-MODELS_DIR = ROOT_DIR / "models"
+_DATA_BASE = os.environ.get("HIVEMIND_DATA_DIR")
+if _DATA_BASE:
+    DATA_DIR = Path(_DATA_BASE) / "data"
+    ADAPTERS_DIR = Path(_DATA_BASE) / "adapters"
+    MODELS_DIR = Path(_DATA_BASE) / "models"
+else:
+    DATA_DIR = ROOT_DIR / "data"
+    ADAPTERS_DIR = ROOT_DIR / "adapters"
+    MODELS_DIR = ROOT_DIR / "models"
+
+
+# 服务器地址 (用户可配置)
+DEFAULT_SERVER_URL = os.environ.get(
+    "HIVEMIND_SERVER_URL",
+    "http://175.27.168.163:8000"  # 你的腾讯云服务器
+)
 
 
 class ModelConfig(BaseModel):
@@ -73,7 +87,7 @@ class ServerConfig(BaseModel):
 class ClientConfig(BaseModel):
     """客户端配置"""
 
-    server_url: str = "http://localhost:8000"
+    server_url: str = DEFAULT_SERVER_URL
     user_id: str = "default_user"
     adapter_dir: Path = ADAPTERS_DIR / "local"
 

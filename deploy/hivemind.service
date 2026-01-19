@@ -1,0 +1,26 @@
+[Unit]
+Description=HiveMind Federated Learning Server
+After=network.target
+
+[Service]
+Type=simple
+User=hivemind
+Group=hivemind
+WorkingDirectory=/opt/hivemind
+Environment="PATH=/opt/hivemind/venv/bin"
+Environment="HIVEMIND_DATA_DIR=/var/lib/hivemind"
+ExecStart=/opt/hivemind/venv/bin/python -m uvicorn hivemind.server.app:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+# Memory limits for low-resource servers
+MemoryMax=1500M
+MemoryHigh=1200M
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hivemind
+
+[Install]
+WantedBy=multi-user.target
