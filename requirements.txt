@@ -1,0 +1,26 @@
+# Core ML
+torch>=2.0.0
+transformers>=4.36.0
+peft>=0.7.0
+datasets>=2.14.0
+accelerate>=0.25.0
+bitsandbytes>=0.41.0
+safetensors>=0.4.0
+
+# Server
+fastapi>=0.104.0
+uvicorn>=0.24.0
+python-multipart>=0.0.6
+
+# Client
+httpx>=0.25.0
+
+# Utils
+pydantic>=2.0.0
+rich>=13.0.0
+typer>=0.9.0
+
+# Dev (optional)
+# pytest>=7.0.0
+# ruff>=0.1.0
+# black>=23.0.0
