@@ -26,6 +26,37 @@ HiveMind 让每个用户拥有独特的个性化 AI，同时通过联邦学习�
 └─────────────────┘                └─────────────────┘
 ```
 
+## 快速开始
+
+```bash
+# 1. 克隆并进入项目
+git clone https://github.com/esengine/HiveMind.git
+cd HiveMind
+
+# 2. 创建虚拟环境
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Linux/macOS
+
+# 3. 安装依赖
+pip install -e .
+
+# 4. 创建示例数据集
+python scripts/train.py --create-sample
+
+# 5. 训练个性化模型 (需要 GPU)
+python scripts/train.py --data ./data/sample_dataset.json
+
+# 6. 测试对话
+python scripts/chat.py --adapter ./adapters/my_adapter
+
+# 7. 启动服务端 (另开终端)
+python scripts/serve.py
+
+# 8. 上传 adapter 到服务器
+python scripts/upload.py --adapter ./adapters/my_adapter
+```
+
 ## 环境要求
 
 - Python 3.10+
@@ -37,7 +68,7 @@ HiveMind 让每个用户拥有独特的个性化 AI，同时通过联邦学习�
 
 ```bash
 # 克隆仓库
-git clone <repository-url>
+git clone https://github.com/esengine/HiveMind.git
 cd HiveMind
 
 # 创建虚拟环境
@@ -53,7 +84,7 @@ source venv/bin/activate
 pip install -e .
 ```
 
-## 快速开始
+## 详细说明
 
 ### 1. 准备训练数据
 

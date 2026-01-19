@@ -26,6 +26,37 @@ Client                                 Server
 └─────────────────┘                └─────────────────┘
 ```
 
+## Quick Start (TL;DR)
+
+```bash
+# 1. Clone and enter project
+git clone https://github.com/esengine/HiveMind.git
+cd HiveMind
+
+# 2. Create virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Linux/macOS
+
+# 3. Install dependencies
+pip install -e .
+
+# 4. Create sample dataset
+python scripts/train.py --create-sample
+
+# 5. Train personalized model (requires GPU)
+python scripts/train.py --data ./data/sample_dataset.json
+
+# 6. Test chat
+python scripts/chat.py --adapter ./adapters/my_adapter
+
+# 7. Start server (in another terminal)
+python scripts/serve.py
+
+# 8. Upload adapter to server
+python scripts/upload.py --adapter ./adapters/my_adapter
+```
+
 ## Requirements
 
 - Python 3.10+
@@ -37,7 +68,7 @@ Client                                 Server
 
 ```bash
 # Clone repository
-git clone <repository-url>
+git clone https://github.com/esengine/HiveMind.git
 cd HiveMind
 
 # Create virtual environment
@@ -53,7 +84,7 @@ source venv/bin/activate
 pip install -e .
 ```
 
-## Quick Start
+## Detailed Guide
 
 ### 1. Prepare Training Data
 
